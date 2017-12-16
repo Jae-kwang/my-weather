@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import Weather from './Weather'
 /**
  * 1. React-native는 React와 다르게 return 할 수 있는 Component가 정해저 있다.
@@ -14,6 +14,7 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
+        <StatusBar hidden={true} />
         {
           isLoaded ? (
             <Weather />
