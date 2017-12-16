@@ -1,11 +1,25 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 
-export default class App extends React.Component {
+/**
+ * 1. React-native는 React와 다르게 return 할 수 있는 Component가 정해저 있다.
+ * 2. ex) <View/> : ios -> object-c / android -> java로 변한다.
+ */
+export default class App extends Component {
+  state = {
+    isLoaded: false
+  }
   render() {
+    const { isLoaded } = this.state
+
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        {
+          isLoaded ? null : (
+            <View style={styles.loading}>
+              <Text style={styles.loadingText}>Getting the weather</Text>
+            </View>
+          )}
       </View>
     );
   }
@@ -14,8 +28,16 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
+  loading: {
+    flex: 1,
+    backgroundColor: '#FDF6AA',
+    justifyContent: 'flex-end',
+    paddingLeft: 25,
+  },
+  loadingText: {
+    fontSize: 38,
+    marginBottom: 100,
+  }
 });
