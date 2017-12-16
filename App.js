@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
-
+import Weather from './Weather'
 /**
  * 1. React-native는 React와 다르게 return 할 수 있는 Component가 정해저 있다.
  * 2. ex) <View/> : ios -> object-c / android -> java로 변한다.
  */
 export default class App extends Component {
   state = {
-    isLoaded: false
+    isLoaded: true
   }
   render() {
     const { isLoaded } = this.state
@@ -15,7 +15,9 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         {
-          isLoaded ? null : (
+          isLoaded ? (
+            <Weather />
+          ) : (
             <View style={styles.loading}>
               <Text style={styles.loadingText}>Getting the weather</Text>
             </View>
