@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { LinearGradient } from 'expo'
-import { Ionicons } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import PropTypes from "prop-types";
 
 const weatherCases = {
@@ -9,44 +9,50 @@ const weatherCases = {
     colors: ["#00C6FB", "#005BEA"],
     title: "Raining",
     subtitle: "For more info look outside",
-    icon: "ios-rainy"
+    icon: "weather-rainy"
   },
   Clear: {
     colors: ["#FEF253", "#FF7300"],
     title: "Sunny",
     subtitle: "go out",
-    icon: "ios-sunny" 
+    icon: "weather-sunny" 
   },
   Thunderstorm: {
     colors: ["#00ECBC", "#007ADF"],
     title: "Thunderstorm",
     subtitle: "Actually, outside of the house",
-    icon: "ios-thunderstorm" 
+    icon: "weather-lightning" 
   }, 
   Clouds: {
     colors: ["#D7D2CC", "#304352"],
     title: "Clouds",
     subtitle: "I know, this is boring",
-    icon: "ios-cloudy" 
+    icon: "weather-cloudy" 
   },
   Snow: {
     colors: ["#7D2FC", "#B9B66E5"],
     title: "Snow",
     subtitle: "Do you wnat to build a snowman?",
-    icon: "ios-snow" 
+    icon: "weather-snowy" 
   },
   Drizzle: {
     colors: ["#89F7FE", "#66A6FF"],
     title: "Drizzle",
     subtitle: "Is like rain",
-    icon: "ios-rain-outline"
+    icon: "weather-hail"
   }, 
   Haze: {
     colors: ["#89F7FE", "#66A6FF"],
     title: "Haze",
     subtitle: "Is like rain",
-    icon: "ios-rain-outline"
+    icon: "weather-hail"
   }, 
+  Mist: {
+    colors: ["#89F7FE", "#66A6FF"],
+    title: "Mist",
+    subtitle: "It's like you have no glasses on.",
+    icon: "weather-fog"
+  }
 }
 
 function Weather({ weatherName, temp }) {
@@ -55,7 +61,7 @@ function Weather({ weatherName, temp }) {
       colors={weatherCases[weatherName].colors}
       style={styles.container}>
       <View style={styles.upper}>
-        <Ionicons color="white" size={144} name={weatherCases[weatherName].icon}></Ionicons>
+        <MaterialCommunityIcons color="white" size={144} name={weatherCases[weatherName].icon}></MaterialCommunityIcons>
         <Text style={styles.temp}>{temp}&#176;</Text>
       </View>
       <View style={styles.lower}>
