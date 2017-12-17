@@ -5,18 +5,21 @@ import Weather from './Weather'
  * 1. React-native는 React와 다르게 return 할 수 있는 Component가 정해저 있다.
  * 2. ex) <View/> : ios -> object-c / android -> java로 변한다.
  */
+
+const API_KEY = "f130d8a69932fb68ab6e7f1fde4cf132";
+
 export default class App extends Component {
   state = {
     isLoaded: false,
-    error: null
+    error: null,
+    temperature: null,
+    name: null
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       position => {
-        this.setState({
-          isLoaded: true 
-        })
+        this._getWeather(position.coords.latitude, position.coords.longitude)
       },
       error => {
         this.setState({
@@ -25,6 +28,19 @@ export default class App extends Component {
       }
     )
   }
+
+  _getWeather = (lat, long) => {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}`)
+    .then(response => response.json())
+    .then(json => {
+      this.setState({
+        temperature: json.main.temp,
+        name: json.weather[0].main,
+        isLoaded: true
+      })
+    })
+  }
+
   render() {
     const { isLoaded, error } = this.state
 

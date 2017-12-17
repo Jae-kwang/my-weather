@@ -7,3 +7,4 @@ Basic project using react native
 
 ## Reference
 icons: [https://expo.github.io/vector-icons/](https://expo.github.io/vector-icons/)
+API: [https://openweathermap.org/api](https://openweathermap.org/api)
